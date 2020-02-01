@@ -1,0 +1,12 @@
+@import '../includes/variables';
+
+.Lists {
+  margin: -32px auto 0;
+  padding: 64px calc((100% - 1024px) / 2);
+  min-height: calc(100vh - 160px);
+  white-space: nowrap;
+  overflow-x: scroll;
+  li:last-of-type {
+    margin: 0;
+  }
+}

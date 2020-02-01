@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
 import '../../styles/atoms/ButtonCancel.scss';
 
-type Props = { }
+type Props = { onClickHandler: () => void };
 
-const ButtonCancel: FC<Props> = () => {
+const ButtonCancel: FC<Props> = ({ onClickHandler }) => {
   return (
-    <div>ButtonCancel</div>
+    <button className="ButtonCancel" onClick={() => onClickHandler()}>CANCEL</button>
   );
 };
 

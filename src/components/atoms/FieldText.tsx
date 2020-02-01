@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
 import '../../styles/atoms/FieldText.scss';
 
-type Props = { }
+type Props = { };
 
 const FieldText: FC<Props> = () => {
   return (
-    <div>FieldText</div>
+    <input className="FieldText" type="text" />
   );
 };
 

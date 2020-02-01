@@ -1,2 +1,14 @@
 @import '../includes/variables';
-@import './Field';
+
+.FieldText {
+  padding: 12px;
+  width: 100%;
+  color: $color_black;
+  background-color: $color_white;
+  border: none;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 16px;
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
