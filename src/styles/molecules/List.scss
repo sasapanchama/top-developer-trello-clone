@@ -1,1 +1,13 @@
 @import '../includes/variables';
+
+.List {
+  margin: 0 32px 0 0;
+  padding: 24px 16px 16px;
+  width: 320px;
+  display: inline-block;
+  vertical-align: top;
+  background-color: $color_black;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 0;
+}

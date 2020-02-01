@@ -1,11 +1,16 @@
 import React, { FC } from 'react';
 import '../../styles/molecules/List.scss';
+import AreaText from '../atoms/AreaText';
+import Tasks from '../organisms/Tasks';
 
-type Props = { }
+type Props = { text: string };
 
-const List: FC<Props> = () => {
+const List: FC<Props> = ({ text }) => {
   return (
-    <div>List</div>
+    <li className="List">
+      <AreaText text={text} />
+      <Tasks />
+    </li>
   );
 };
 

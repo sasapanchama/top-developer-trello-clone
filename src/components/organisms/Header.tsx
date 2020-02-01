@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
 import '../../styles/organisms/Header.scss';
 
-type Props = { }
+type Props = { };
 
 const Header: FC<Props> = () => {
   return (
-    <header>Header</header>
+    <header className="Header"></header>
   );
 };
 

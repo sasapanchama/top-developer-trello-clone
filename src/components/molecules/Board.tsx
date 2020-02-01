@@ -1,11 +1,15 @@
 import React, { FC } from 'react';
 import '../../styles/molecules/Board.scss';
 
-type Props = { }
+type Props = { text: string };
 
-const Board: FC<Props> = () => {
+const Board: FC<Props> = ({ text }) => {
   return (
-    <div>Board</div>
+    <li className="Board">
+      <a href="#">
+        {text}
+      </a>
+    </li>
   );
 };
 

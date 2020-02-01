@@ -1,11 +1,13 @@
 import React, { FC } from 'react';
 import '../../styles/organisms/Footer.scss';
 
-type Props = { }
+type Props = { };
 
 const Footer: FC<Props> = () => {
   return (
-    <footer>Footer</footer>
+    <footer className="Footer">
+      <p className="Footer_Copyright">&copy;copyright.</p>
+    </footer>
   );
 };
 

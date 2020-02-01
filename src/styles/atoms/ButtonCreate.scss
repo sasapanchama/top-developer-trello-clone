@@ -1,2 +1,12 @@
 @import '../includes/variables';
 @import './Button';
+
+.ButtonCreate {
+  @extend .Button;
+  color: $color_orange;
+  border: 2px solid $color_orange;
+  &:hover {
+    color: $color_black;
+    background-color: $color_orange;
+  }
+}

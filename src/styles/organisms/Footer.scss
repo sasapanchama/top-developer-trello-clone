@@ -1,1 +1,11 @@
 @import '../includes/variables';
+
+.Footer {
+  padding: 32px 0;
+  color: $color_white;
+  background-color: $color_black;
+  &_Copyright {
+    font-size: 12px;
+    text-align: center;
+  }
+}

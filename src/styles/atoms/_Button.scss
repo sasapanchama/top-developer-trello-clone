@@ -1,1 +1,13 @@
 @import '../includes/variables';
+
+.Button {
+  padding: 12px 0;
+  width: calc(50% - 8px);
+  background-color: $color_black;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  transition: .2s;
+}

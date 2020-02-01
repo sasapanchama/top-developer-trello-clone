@@ -1,2 +1,12 @@
 @import '../includes/variables';
 @import './Button';
+
+.ButtonCancel {
+  @extend .Button;
+  color: $color_white;
+  border: 2px solid $color_white;
+  &:hover {
+    color: $color_black;
+    background-color: $color_white;
+  }
+}

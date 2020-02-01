@@ -1,1 +1,15 @@
 @import '../includes/variables';
+
+.Boards {
+  margin: -32px auto 0;
+  padding: 64px 0;
+  width: 1024px;
+  min-height: calc(100vh - 160px);
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  // align-items: flex-start;
+  li:nth-of-type(4n + 4) {
+    margin: 32px 0 0 0;
+  }
+}
