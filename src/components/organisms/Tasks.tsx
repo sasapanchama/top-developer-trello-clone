@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import '../../styles/molecules/Tasks.scss';
+import '../../styles/organisms/Tasks.scss';
 
 type Props = { }
 
