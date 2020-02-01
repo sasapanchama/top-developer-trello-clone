@@ -42,13 +42,13 @@ const TopPage: FC<Props> = () => {
         <button className="BoardCreate_Label">
           Create New Board!
         </button>
-        {/* <div className="BoardCreate_Box">
+        <div className="BoardCreate_Box">
           <input className="Field FieldText" type="text" />
           <div className="BoardCreate_Box_Button">
             <button className="Button ButtonCancel">CANCEL</button>
             <button className="Button ButtonCreate">CREATE</button>
           </div>
-        </div> */}
+        </div>
       </li>
     </ul>
     <footer className="Footer">
