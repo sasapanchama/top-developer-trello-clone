@@ -1,19 +1,30 @@
 import React, { FC } from 'react';
+import { TaskType } from '../../store/types';
 import '../../styles/organisms/Tasks.scss';
 import Task from '../molecules/Task';
 import TaskCreate from './TaskCreate';
 
-type Props = { };
+type Props = { index: number, tasks: TaskType[] | null, tasksHandlers: any };
 
-const Tasks: FC<Props> = () => {
+const Tasks: FC<Props> = ({ index, tasks, tasksHandlers }) => {
+
+  let taskItems = null;
+  if (tasks !== null) {
+    taskItems = tasks.map((task, index) => {
+      return (
+        <Task
+          key={task.created_at}
+          index={index}
+          text={task.text}
+        />
+      )
+    })
+  }
+
   return (
     <ul className="Tasks">
-      <Task text={'TaskTitle aaaaa'} />
-      <Task text={'TaskTitle bbbbb'} />
-      <Task text={'TaskTitle ccccc'} />
-      <Task text={'TaskTitle ddddd'} />
-      <Task text={'TaskTitle eeeee'} />
-      <TaskCreate />
+      {taskItems}
+      <TaskCreate index={index} tasksHandlers={tasksHandlers} />
     </ul>
   );
 };

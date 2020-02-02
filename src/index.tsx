@@ -24,8 +24,8 @@ const App: FC = () => {
     <Provider store={store}>
       <BrowserRouter>
         <Switch>
-          <Route path="/bottom" component={BottomPage} />
-          <Route path="/top" component={TopPage} />
+          {/* <Route path="/bottom" component={BottomPage} />
+          <Route path="/top" component={TopPage} /> */}
           <Route path="/:user/:board" component={BottomPage} />
           <Route path="/:user" component={TopPage} />
           <Route path="/" component={InitPage} />

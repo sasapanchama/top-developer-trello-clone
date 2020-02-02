@@ -4,12 +4,12 @@ import '../../styles/organisms/Boards.scss';
 import Board from '../molecules/Board';
 import BoardCreate from './BoardCreate';
 
-type Props = { user: string,boards: BoardType[] | null, boardsHandlers: any };
+type Props = { user: string, boards: BoardType[] | null, boardsHandlers: any };
 
 const Boards: FC<Props> = ({ user, boards, boardsHandlers }) => {
-  let bordItems;
+  let boardItems = null;
   if (boards !== null) {
-    bordItems = boards.map((board, index) => {
+    boardItems = boards.map((board, index) => {
       return (
         <Board
           key={board.created_at}
@@ -22,7 +22,7 @@ const Boards: FC<Props> = ({ user, boards, boardsHandlers }) => {
   }
   return (
     <ul className="Boards">
-      {bordItems}
+      {boardItems}
       <BoardCreate boardsHandlers={boardsHandlers} />
     </ul>
   );
