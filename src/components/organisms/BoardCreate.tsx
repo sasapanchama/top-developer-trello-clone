@@ -4,22 +4,34 @@ import FieldText from '../atoms/FieldText';
 import ButtonCancel from '../atoms/ButtonCancel';
 import ButtonCreate from '../atoms/ButtonCreate';
 
-type Props = { };
+type Props = { boardsHandlers: any };
 
-const BoardCreate: FC<Props> = () => {
+const BoardCreate: FC<Props> = ({ boardsHandlers }) => {
 
-  const [stateIsOpen, setStateIsOpen] = useState(false);
+  const [stateIsOpen, setStateIsOpen] = useState<boolean>(false);
+  const [stateText, setStateText] = useState<string>('');
+
+  const addBoard = boardsHandlers.addBoard;
 
   const onClickHandlerLabel = () => {
     setStateIsOpen(true);
   };
 
+  const onChangeHandlerFieldText = (e: any) => {
+    setStateText(e.target.value);
+  };
+
   const onClickHandlerButtonCencel = () => {
     setStateIsOpen(false);
+    setStateText('');
   };
 
   const onClickHandlerButtonCreate = () => {
-    alert('send');
+    if (stateText !== '') {
+      addBoard(stateText);
+      setStateIsOpen(false);
+      setStateText('');
+    };
   };
 
   return (
@@ -28,7 +40,7 @@ const BoardCreate: FC<Props> = () => {
         Create New Board!
       </button>
       <div className="BoardCreate_Box">
-        <FieldText />
+        <FieldText text={stateText} onChangeHandler={onChangeHandlerFieldText} />
         <div className="BoardCreate_Box_Button">
           <ButtonCancel onClickHandler={onClickHandlerButtonCencel} />
           <ButtonCreate onClickHandler={onClickHandlerButtonCreate} />

@@ -7,7 +7,7 @@ type Props = { };
 const TaskCreate: FC<Props> = () => {
   return (
     <li className="TaskCreate">
-      <FieldText />
+      <FieldText text={''} onChangeHandler={(e) => {}} />
     </li>
   );
 };

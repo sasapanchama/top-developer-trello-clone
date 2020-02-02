@@ -8,7 +8,7 @@ type Props = { };
 
 const ListCreate: FC<Props> = () => {
 
-  const [stateIsOpen, setStateIsOpen] = useState(false);
+  const [stateIsOpen, setStateIsOpen] = useState<boolean>(false);
 
   const onClickHandlerLabel = () => {
     setStateIsOpen(true);
@@ -28,7 +28,7 @@ const ListCreate: FC<Props> = () => {
         Create New Board!
       </button>
       <div className="ListCreate_Box">
-        <FieldText />
+      <FieldText text={''} onChangeHandler={(e) => {}} />
         <div className="ListCreate_Box_Button">
           <ButtonCancel onClickHandler={onClickHandlerButtonCencel} />
           <ButtonCreate onClickHandler={onClickHandlerButtonCreate} />

@@ -5,7 +5,7 @@ type Props = { text: string };
 
 const AreaText: FC<Props> = ({ text }) => {
 
-  const [stateText, setStateText] = useState(text);
+  const [stateText, setStateText] = useState<string>(text);
 
   // const initResize = () => {
 
