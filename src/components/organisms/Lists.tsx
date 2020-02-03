@@ -10,14 +10,15 @@ const Lists: FC<Props> = ({ user, lists, listsHandlers, tasksHandlers }) => {
   
   let listItems = null;
   if (lists !== null) {
-    listItems = lists.map((list, index) => {
+    listItems = lists.map((list, listIndex) => {
       return (
         <List
           key={list.created_at}
-          index={index}
+          listIndex={listIndex}
           text={list.text}
-          tasksHandlers={tasksHandlers}
           lists={lists}
+          listsHandlers={listsHandlers}
+          tasksHandlers={tasksHandlers}
         />
       )
     })

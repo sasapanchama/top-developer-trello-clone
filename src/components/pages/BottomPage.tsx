@@ -36,6 +36,35 @@ const BottomPage: FC<Props> = ({ boards, setBoards, history, location, match }) 
     });
   }, []);
 
+  const lists: ListType[] | null = boards !== null && boards[boardIndex].lists !== undefined
+    ? boards[boardIndex].lists
+    : null;
+
+  const moveArray = (array: ListType[] | TaskType[], index: number, at: number) => {
+    const value = array[index];
+    const tail = array.slice(index + 1);
+    array.splice(index);
+    Array.prototype.push.apply(array, tail);
+    array.splice(at, 0, value);
+    return array;
+  };
+
+  const detectDrag = (e: any, index: number, type: string) => {
+    e.dataTransfer.setData(type, index);
+  };
+
+  const detectDrop = (e: any, index: number, type: string) => {
+    e.preventDefault();
+    let draggedIndex = Number(e.dataTransfer.getData(type));
+    let droppedIndex = index;
+    e.dataTransfer.clearData();
+    return [draggedIndex, droppedIndex];
+  };
+
+  const allowDrop = (e: any) => {
+    e.preventDefault();
+  };
+
   const addList = (text: string) => {
     const refLists = firebaseData.ref(`users/${user}/boards/${boardIndex}/lists`);
     const newList: ListType = { text: text, created_at: firebaseObject.ServerValue.TIMESTAMP, tasks: null};
@@ -45,6 +74,17 @@ const BottomPage: FC<Props> = ({ boards, setBoards, history, location, match }) 
     oldLists !== null
       ? refLists.update([newList, ...oldLists])
       : refLists.update([newList]);
+  };
+
+  const replaceList = (indexes: number[]) => {
+    const refLists = firebaseData.ref(`users/${user}/boards/${boardIndex}/lists`);
+    const oldLists: ListType[] | null = boards !== null && boards[boardIndex].lists !== undefined
+      ? boards[boardIndex].lists
+      : null;
+    if (oldLists !== null) {
+      let newLists = moveArray(oldLists, indexes[0], indexes[1]);
+      refLists.update(newLists);
+    };
   };
 
   const addTask = (listIndex: number, text: string) => {
@@ -61,13 +101,23 @@ const BottomPage: FC<Props> = ({ boards, setBoards, history, location, match }) 
       : refTasks.update([newTask]);
   };
 
-  const lists: ListType[] | null = boards !== null && boards[boardIndex].lists !== undefined
-    ? boards[boardIndex].lists
-    : null;
+  const replaceTask = (listIndex: number, indexes: number[]) => {
+    const refTasks = firebaseData.ref(`users/${user}/boards/${boardIndex}/lists/${listIndex}/tasks`);
+    const oldLists: ListType[] | null = boards !== null && boards[boardIndex].lists !== undefined
+      ? boards[boardIndex].lists
+      : null;
+    const oldTasks: TaskType[] | null = oldLists !== null && oldLists[listIndex].tasks !== undefined
+      ? oldLists[listIndex].tasks
+      : null;
+    if (oldTasks !== null) {
+      let newTasks = moveArray(oldTasks, indexes[0], indexes[1]);
+      refTasks.update(newTasks);
+    };
+  };
 
-  const listsHandlers = { addList };
+  const listsHandlers = { detectDrag, allowDrop, detectDrop, addList, replaceList };
 
-  const tasksHandlers = { addTask };
+  const tasksHandlers = { detectDrag, allowDrop, detectDrop, addTask, replaceTask };
 
   return (
     <Base>

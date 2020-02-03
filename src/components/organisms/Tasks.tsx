@@ -4,18 +4,20 @@ import '../../styles/organisms/Tasks.scss';
 import Task from '../molecules/Task';
 import TaskCreate from './TaskCreate';
 
-type Props = { index: number, tasks: TaskType[] | null, tasksHandlers: any };
+type Props = { listIndex: number, tasks: TaskType[] | null, tasksHandlers: any };
 
-const Tasks: FC<Props> = ({ index, tasks, tasksHandlers }) => {
+const Tasks: FC<Props> = ({ listIndex, tasks, tasksHandlers }) => {
 
   let taskItems = null;
   if (tasks !== null) {
-    taskItems = tasks.map((task, index) => {
+    taskItems = tasks.map((task, taskIndex) => {
       return (
         <Task
           key={task.created_at}
-          index={index}
+          listIndex={listIndex}
+          taskIndex={taskIndex}
           text={task.text}
+          tasksHandlers={tasksHandlers}
         />
       )
     })
@@ -24,7 +26,7 @@ const Tasks: FC<Props> = ({ index, tasks, tasksHandlers }) => {
   return (
     <ul className="Tasks">
       {taskItems}
-      <TaskCreate index={index} tasksHandlers={tasksHandlers} />
+      <TaskCreate listIndex={listIndex} tasksHandlers={tasksHandlers} />
     </ul>
   );
 };

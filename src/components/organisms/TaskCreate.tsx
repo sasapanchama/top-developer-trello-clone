@@ -2,9 +2,9 @@ import React, { FC, useState } from 'react';
 import '../../styles/organisms/TaskCreate.scss';
 import FieldText from '../atoms/FieldText';
 
-type Props = { index: number, tasksHandlers: any };
+type Props = { listIndex: number, tasksHandlers: any };
 
-const TaskCreate: FC<Props> = ({ index, tasksHandlers }) => {
+const TaskCreate: FC<Props> = ({ listIndex, tasksHandlers }) => {
 
   const [stateText, setStateText] = useState<string>('');
 
@@ -16,7 +16,7 @@ const TaskCreate: FC<Props> = ({ index, tasksHandlers }) => {
 
   const onKeyDownHandlerFieldText = (e: any) => {
     if (stateText !== '' && e.key === 'Enter') {
-      addTask(index, stateText);
+      addTask(listIndex, stateText);
       setStateText('');
     };
   };
