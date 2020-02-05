@@ -2,13 +2,12 @@ import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 import '../../styles/molecules/Board.scss';
 
-type Props = { text: string };
+type Props = { index: number, text: string, pathname: string };
 
-const Board: FC<Props> = ({ text }) => {
+const Board: FC<Props> = ({ index, text, pathname }) => {
   return (
     <li className="Board">
-      <Link to={{ pathname: `/bottom` }}>{text}</Link>
-      {/* <Link to={{ pathname: `/${user}/${board}`, state: { index } }}>{text}</Link> */}
+      <Link to={{ pathname, state: index }}>{text}</Link>
     </li>
   );
 };

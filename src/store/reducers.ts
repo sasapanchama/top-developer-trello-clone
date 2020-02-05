@@ -1,36 +1,20 @@
-import { SET_USER, ActionTypes, RootState } from './types'
+import {
+  SET_USER, SET_BOARDS, SET_LISTS, SET_TASKS,
+  ActionTypes,
+  RootState
+} from './types'
 
 const initialState: RootState = {
-  pushKey: ''
+  user: '',
+  boards: null
 };
-
-const memoState = {
-  user: {
-    boards: [
-      {
-        title: 'string',
-        created_at: 'time',
-        lists: [
-          {
-            title: 'string',
-            created_at: 'time',
-            tasks: [
-              {
-                title: 'string',
-                created_at: 'time'
-              }
-            ]
-          }
-        ],
-      }
-    ]
-  }
-}
 
 export const rootReducer = (state = initialState, action: ActionTypes): RootState => {
   switch (action.type) {
     case SET_USER:
-      return { ...state, pushKey: action.payload };
+      return { ...state, user: action.payload };
+    case SET_BOARDS:
+      return { ...state, boards: action.payload };
     default:
       return state;
   };
